@@ -4,7 +4,7 @@ const server = http.createServer((req, res) => {
   // set header content type
   res.setHeader("Content-Type", "text/html");
   //path
-  let path = "./public/";
+  let path = "../public/";
   switch (req.url) {
     case "/":
       path += "index.html";
@@ -19,10 +19,10 @@ const server = http.createServer((req, res) => {
       res.statusCode = 200;
       break;
     case "/about-me":
-    // page moved : 301      
+      // page moved : 301
       res.statusCode = 301;
-// redirects to about
-      res.setHeader('Location', '/about')
+      // redirects to about
+      res.setHeader("Location", "/about");
       res.end();
       break;
     default:
@@ -40,6 +40,8 @@ const server = http.createServer((req, res) => {
     }
   });
 });
-server.listen(3000, "localhost", () => {
-  console.log("listening for requests on port 3000");
+const PORT = 8080;
+
+server.listen(PORT, "localhost", () => {
+  console.log(`listening for requests on port ${PORT}`);
 });
